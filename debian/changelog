@@ -1,0 +1,103 @@
+libppix-quotelike-perl (0.018-1) unstable; urgency=medium
+
+  * Import upstream version 0.018.
+
+ -- gregor herrmann <gregoa@debian.org>  Sun, 24 Oct 2021 17:43:12 +0200
+
+libppix-quotelike-perl (0.017-1) unstable; urgency=medium
+
+  * Import upstream versions 0.016, 0.017.
+  * Update debian/upstream/metadata.
+  * Declare compliance with Debian Policy 4.6.0.
+
+ -- gregor herrmann <gregoa@debian.org>  Sun, 26 Sep 2021 12:33:17 +0200
+
+libppix-quotelike-perl (0.015-1) unstable; urgency=medium
+
+  * Import upstream version 0.015.
+
+ -- gregor herrmann <gregoa@debian.org>  Mon, 15 Feb 2021 21:32:32 +0100
+
+libppix-quotelike-perl (0.014-1) unstable; urgency=medium
+
+  * Import upstream version 0.014.
+  * Update debian/upstream/metadata.
+  * Update years of upstream and packaging copyright.
+  * Declare compliance with Debian Policy 4.5.1.
+
+ -- gregor herrmann <gregoa@debian.org>  Mon, 18 Jan 2021 21:43:11 +0100
+
+libppix-quotelike-perl (0.013-1) unstable; urgency=medium
+
+  * Import upstream version 0.013.
+
+ -- gregor herrmann <gregoa@debian.org>  Sat, 10 Oct 2020 17:59:49 +0200
+
+libppix-quotelike-perl (0.012-1) unstable; urgency=medium
+
+  * Import upstream version 0.012.
+  * Bump debhelper-compat to 13.
+
+ -- gregor herrmann <gregoa@debian.org>  Thu, 30 Jul 2020 18:52:51 +0200
+
+libppix-quotelike-perl (0.011-1) unstable; urgency=medium
+
+  * Import upstream version 0.011.
+  * Update (build) dependencies.
+
+ -- gregor herrmann <gregoa@debian.org>  Thu, 02 Apr 2020 17:35:47 +0200
+
+libppix-quotelike-perl (0.010-1) unstable; urgency=medium
+
+  * Import upstream version 0.010.
+
+ -- gregor herrmann <gregoa@debian.org>  Fri, 13 Mar 2020 16:32:34 +0100
+
+libppix-quotelike-perl (0.009-1) unstable; urgency=medium
+
+  * Import upstream version 0.009.
+  * Update years of upstream and packaging copyright.
+  * Declare compliance with Debian Policy 4.5.0.
+
+ -- gregor herrmann <gregoa@debian.org>  Sat, 07 Mar 2020 17:01:51 +0100
+
+libppix-quotelike-perl (0.008-1) unstable; urgency=medium
+
+  * Team upload.
+
+  * New upstream version 0.008
+  * d/control:
+    - Declare compliance with Debian Policy 4.4.1
+    - Add Rules-Requires-Root field
+    - Annotate test-only build dependencies with <!nocheck>
+  * d/copyright:
+    - Refresh years of upstream copyright
+  * d/rules:
+    - Rewrite shebang for variables example
+  * d/u/metadata:
+    - Drop deprecated Contact, Name fields
+  * d/watch:
+    - Migrate to version 4 watch file format
+
+ -- Nick Morrott <nickm@debian.org>  Wed, 11 Dec 2019 03:46:00 +0000
+
+libppix-quotelike-perl (0.007-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Laurent Baillet ]
+  * fix lintian wrong-path-for-interpreter error
+
+  [ intrigeri ]
+  * Import upstream version 0.007
+  * Bump debhelper compatibility version to 12.
+  * Declare compatibility with Debian Policy 4.4.0.
+  * Make dependencies provided by perl explicit.
+
+ -- intrigeri <intrigeri@debian.org>  Thu, 25 Jul 2019 03:17:47 +0000
+
+libppix-quotelike-perl (0.006-1) unstable; urgency=medium
+
+  * Initial release (closes: #900590).
+
+ -- gregor herrmann <gregoa@debian.org>  Sun, 22 Jul 2018 17:13:18 +0200

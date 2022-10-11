@@ -1,0 +1,152 @@
+0.018		2021-10-22	T. R. Wyant
+    Argument postderef is now fatal.
+
+    Correct generation of 'provides' metadata.  Thanks to Favio Poletti
+    for blogging
+    https://github.polettix.it/ETOOBUSY/2021/06/15/the-real-pause-workaround/,
+    and ultimately to Joel Berger for the pointer to
+    https://metacpan.org/pod/CPAN::Meta::Spec#no_index
+
+0.017		2021-04-16	T. R. Wyant
+    All uses of the postderef argument to new() now warn.
+
+0.016		2021-03-26	T. R. Wyant
+    Add rt.cpan.org back to bug reporting methods. Long live RT!
+
+    Get prerequisites up to snuff, and add xt/author/prereq.t to ensure
+    they stay that way.
+
+    Refactor authortest into three, so I do not have to generate stub
+    files to test without optional modules.
+
+0.015		2021-02-05	T. R. Wyant
+    Handle <<\EOD and <<~\EOD, which are equivalent to <<'EOD' and
+    <<~'EOD', respectively.
+
+    Recognize indented here documents. Thanks to Olaf Alders (oalders)
+    for alerting me to this omission.
+
+0.014		2021-01-14	T. R. Wyant
+    Add Travis CI testing.
+
+    Use GitHub as bug tracker. R.I.P. rt.cpan.org.
+
+0.013		2020-10-09	T. R. Wyant
+    Warn on first use of attribute 'postderef'.
+
+0.012		2020-07-28	T. R. Wyant
+    Remove prototypes from testing subroutines defined in t/*.t.
+
+0.011		2020-03-31	T. R. Wyant
+    Normalize interpolation before feeding to PPI. This produces a
+    more-easily-analyzed PPI parse.
+
+    The ->variables() method is now discouraged. It was written to support
+    Perl::Critic::Policy::Variables::ProhibitUnusedVarsStricter, but turned
+    out to be inadequate for the job.
+
+    Deprecate new() argument postderef. At this stage it is only
+    documented as deprecated. In the first release after October 1 2020
+    it will warn on the first use. Eventually it will be retracted, and
+    postfix dereferences will always be recognized. This is the default
+    behavior now.
+
+    Correct bracket matchers to accept multiple lines. This was, in some
+    cases, causing interpolations to be misclassified as unknown tokens.
+
+0.010		2020-03-09	T. R. Wyant
+    Remove redundant and poorly-performing code introduced in version
+    0.009.
+
+0.009		2020-02-27	T. R. Wyant
+    Add new() argument index_locations which causes locations to be
+    indexed during the parse. This defaults based on whether a location
+    argument was provided, and whether the string being parsed is a
+    PPI::Element.
+
+    Add method statement(), which returns the PPI statement containing
+    the string element, or nothing if none.
+
+    Add PPI::Element location methods, to wit: location(),
+    column_number(), line_number(), logical_filename(),
+    logical_line_number(), and visual_column_number().
+
+    Add PPIx::QuoteLike::Utils::is_ppi_quotelike_element() which returns
+    true if the argument is a PPI::Element of interest to us.
+
+    All objects now have a variables() method inherited from
+    PPIx::QuoteLike::Token. This method returns nothing unless
+    overridden. It was added to eliminate $elem->can( 'variables' )
+    ad-hocery.
+
+    Eliminate redirections in POD URL links
+
+0.008		2019-08-16	T. R. Wyant
+    Fix broken POD links, and add test to ensure they stay fixed.
+
+0.007		2019-05-31	T. R. Wyant
+    Prohibit interpolation inside \N{...}.
+
+    Fix error message in eg/pqldump
+
+    Allow PPIx::QuoteLike::Utils::__variables() to take a PPI::Element
+    (rather than PPI::Node), PPIx::Regexp::Element, PPIx::QuoteLike, or
+    PPIx::QuoteLike::Token.
+
+    Add eg/variables
+
+0.006		2018-07-09	T. R. Wyant
+    Only standalone graphemes and non-characters allowed as delimiters
+    starting with Perl 5.29.0.
+    
+    Non-ASCII delimiters started working in 5.8.3, so that is what
+    perl_version_introduced() returns for them.
+
+    Collateral with all this, accept word characters as delimiters, but
+    only with at least one space between the operator and the expression
+    -- that is, 'qq xyx' is OK, but 'qqxyx' is not.
+
+0.005		2016-06-23	T. R. Wyant
+  Fix problem handling nested brackets.
+
+  Fix various corner cases, including such things as '${^O}', '${]}',
+    and even '$${$_[0]}', which turned out to be '$$' followed by
+    '$_[0]'.
+
+  Also pulled the variable recognition out into a separate module in
+    anticipation of it being used other places.
+
+  Dumper message if arg does not parse
+
+  Recognize "$^O" (e.g.) as interpolating $^O, not $^ followed by a
+    literal "O".
+
+0.004		2016-06-13	T. R. Wyant
+  Require PPI, which was formerly optional. This is because I decided
+    that the variables() method (which needs it) was one of the
+    fundamental points of the module.
+
+0.003		2016-06-12	T. R. Wyant
+  Another attempt to make old Perls work. Version 0.002 assumed I could
+    have other interpolations in a regex with (??{...}), but this turned
+    out not to be the case if Perl was earlier than 5.18.0. This was
+    actually a step in the wrong direction since (?-1) works back to
+    5.10.0.
+
+  Add PPIx::QuoteLike::Dumper, redo eg/pqldump to use it.
+
+  Recognize postderef slice syntax. This is stuff like $x->@[0,2] (array
+    slice) or $x->@{foo,bar} (hash slice).
+
+  Add methods perl_version_introduced() and perl_version_removed(). As
+    of this release, the former returns '5.000' unless '\F' or postfix
+    dereferencing are detected, and the latter always returns undef.
+
+0.002		2016-06-11	T. R. Wyant
+  Eliminte blockers to running under Perl 5.6. The significant change
+    was replacing (?-1) in a regular expression (introduced in 5.9.5)
+    with (??{...}) (going back to Heaven knows when, and used in
+    Regexp::Common back in 2003).
+
+0.001		2016-06-09	T. R. Wyant
+  Initial release to CPAN.
